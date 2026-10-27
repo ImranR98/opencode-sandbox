@@ -9,7 +9,7 @@ ARG OPENCODE_VERSION=2.1.4
 ARG NODE_VERSION=24.22.1
 
 # --- opencode CLI -----------------------------------------------------------
-FROM debian:trixie-slim AS opencode-bin
+FROM debian:trixie-slim@sha256:62bd423aeee912639ca8ee681c2b762cb3e25137e0a92b20be455898a9f034ad AS opencode-bin
 ARG OPENCODE_VERSION
 RUN apt-get update \
  && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ca-certificates curl \
@@ -21,7 +21,7 @@ RUN curl -fsSL "https://registry.npmjs.org/@opencode/cli-linux-x64-baseline/-/cl
  && /out/opencode --version
 
 # --- nvm + Node LTS ---------------------------------------------------------
-FROM debian:trixie-slim AS nvm
+FROM debian:trixie-slim@sha256:62bd423aeee912639ca8ee681c2b762cb3e25137e0a92b20be455898a9f034ad AS nvm
 ARG NVM_VERSION=0.40.8
 ARG NODE_VERSION
 ARG UID=1000
@@ -45,7 +45,7 @@ RUN /bin/bash -c 'git clone --depth=1 --branch "v${NVM_VERSION}" https://github.
  && npm --version'
 
 # --- Homebrew + portable Ruby ----------------------------------------------
-FROM debian:trixie-slim AS brew
+FROM debian:trixie-slim@sha256:62bd423aeee912639ca8ee681c2b762cb3e25137e0a92b20be455898a9f034ad AS brew
 ARG UID=1000
 ARG GID=1000
 ENV LANG=C.UTF-8 \
@@ -61,7 +61,7 @@ RUN NONINTERACTIVE=1 CI=1 /bin/bash -c "$(curl -fsSL https://raw.githubuserconte
 RUN /home/opencode/.linuxbrew/bin/brew --version
 
 # --- final image ------------------------------------------------------------
-FROM debian:trixie-slim
+FROM debian:trixie-slim@sha256:62bd423aeee912639ca8ee681c2b762cb3e25137e0a92b20be455898a9f034ad
 ARG NODE_VERSION
 ARG UID=1000
 ARG GID=1000
