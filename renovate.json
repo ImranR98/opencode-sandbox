@@ -10,26 +10,7 @@
   "labels": [
     "deps"
   ],
-  "automerge": false,
   "packageRules": [
-    {
-      "description": "Auto-merge non-major updates after the required test check passes",
-      "matchUpdateTypes": [
-        "minor",
-        "patch",
-        "pin",
-        "digest",
-        "pinDigest"
-      ],
-      "automerge": true
-    },
-    {
-      "description": "Auto-merge major updates after the full test gate passes",
-      "matchUpdateTypes": [
-        "major"
-      ],
-      "automerge": true
-    },
     {
       "description": "Batch non-major npm updates; majors stay separate",
       "matchManagers": [
