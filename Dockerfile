@@ -6,7 +6,7 @@
 # Version ARGs are pinned. Renovate custom managers in renovate.json update
 # them; rebuild and re-pin the image digest with build.sh after a bump.
 ARG OPENCODE_VERSION=2.2.0
-ARG NODE_VERSION=24.22.1
+ARG NODE_VERSION=24.22.2
 
 # --- opencode CLI -----------------------------------------------------------
 FROM debian:trixie-slim@sha256:62bd423aeee912639ca8ee681c2b762cb3e25137e0a92b20be455898a9f034ad AS opencode-bin
